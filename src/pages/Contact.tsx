@@ -1,12 +1,59 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ContactForm from '@/components/contact/ContactForm';
 
+// Define types for Google Maps
+declare global {
+  interface Window {
+    google: any;
+    initContactMap: () => void;
+  }
+}
+
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Initialize Google Map
+    const initMap = () => {
+      const mapDiv = document.getElementById('contact-google-map');
+      if (!mapDiv || !window.google) return;
+      
+      // Coordinates for Krishnagar Municipality, Bahadurjung, Kapilvastu, Nepal
+      const krishnagarCoords = { lat: 27.5480, lng: 83.0758 };
+      
+      const map = new window.google.maps.Map(mapDiv, {
+        center: krishnagarCoords,
+        zoom: 15,
+        mapTypeControl: true,
+        fullscreenControl: true,
+      });
+      
+      // Add marker for Krishnagar Municipality
+      new window.google.maps.Marker({
+        position: krishnagarCoords,
+        map,
+        title: "Krishnagar Municipality, Bahadurjung, Kapilvastu, Lumbini, Nepal"
+      });
+    };
+    
+    // Load Google Maps API
+    if (!window.google) {
+      const googleMapScript = document.createElement('script');
+      googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initContactMap`;
+      googleMapScript.async = true;
+      googleMapScript.defer = true;
+      window.initContactMap = initMap;
+      document.head.appendChild(googleMapScript);
+    } else {
+      initMap();
+    }
+    
+    return () => {
+      // Clean up the global callback
+      window.initContactMap = undefined;
+    };
   }, []);
   
   return (
@@ -38,8 +85,8 @@ const Contact = () => {
                     <div className="ml-4">
                       <h3 className="font-medium text-gray-900">Our Location</h3>
                       <address className="not-italic text-gray-600 mt-1">
-                        123 Healthcare Avenue<br />
-                        Medical District, MD 10010
+                        Krishnagar Municipality<br />
+                        Bahadurjung, Kapilvastu, Lumbini, Nepal
                       </address>
                     </div>
                   </div>
@@ -87,15 +134,11 @@ const Contact = () => {
               </div>
               
               <div className="mt-8 bg-white rounded-2xl shadow-lg overflow-hidden fade-in-element" style={{ animationDelay: '300ms' }}>
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059412374!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1588100597531!5m2!1sen!2s" 
-                  width="100%" 
-                  height="300" 
-                  style={{ border: 0 }}
-                  allowFullScreen={true} 
-                  loading="lazy"
-                  title="MedFlow Location"
-                ></iframe>
+                <div id="contact-google-map" className="w-full h-[300px]"></div>
+                <div className="bg-white p-4">
+                  <h4 className="font-medium mb-2">Krishnagar Municipality</h4>
+                  <p className="text-gray-600">Bahadurjung, Kapilvastu, Lumbini, Nepal</p>
+                </div>
               </div>
             </div>
             
