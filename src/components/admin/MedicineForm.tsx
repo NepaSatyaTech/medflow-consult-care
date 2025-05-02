@@ -79,9 +79,15 @@ const MedicineForm: React.FC<MedicineFormProps> = ({ medicine, onSave, onCancel 
     setIsSubmitting(true);
     
     setTimeout(() => {
+      // Create a proper Medicine object with all required fields
       const savedMedicine: Medicine = {
         id: medicine?.id || Math.random().toString(36).substring(2, 9),
-        ...values,
+        name: values.name,
+        imageUrl: values.imageUrl,
+        category: values.category,
+        description: values.description,
+        price: values.price,
+        inStock: values.inStock,
       };
       
       onSave(savedMedicine);
