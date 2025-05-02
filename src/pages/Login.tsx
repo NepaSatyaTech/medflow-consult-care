@@ -4,6 +4,14 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import AuthForm from '@/components/auth/AuthForm';
 
+// Define types for Google Maps
+declare global {
+  interface Window {
+    google: any;
+    initGoogleMap: () => void;
+  }
+}
+
 const Login = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,7 +24,7 @@ const Login = () => {
       // Coordinates for Krishnagar Municipality, Bahadurjung, Kapilvastu, Nepal
       const krishnagarCoords = { lat: 27.5480, lng: 83.0758 };
       
-      const map = new google.maps.Map(mapDiv, {
+      const map = new window.google.maps.Map(mapDiv, {
         center: krishnagarCoords,
         zoom: 15,
         mapTypeControl: true,
@@ -24,7 +32,7 @@ const Login = () => {
       });
       
       // Add marker for Krishnagar Municipality
-      new google.maps.Marker({
+      new window.google.maps.Marker({
         position: krishnagarCoords,
         map,
         title: "Krishnagar Municipality, Bahadurjung, Kapilvastu, Nepal"
