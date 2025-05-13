@@ -14,7 +14,7 @@ export const medicines: Medicine[] = [
   {
     id: '2',
     name: 'Cold Relief Max',
-    imageUrl: '/placeholder.svg',
+    imageUrl: '/500x500.jpg',
     category: 'Cold & Flu',
     description: 'Fast relief for cold and flu symptoms including congestion, fever, and cough.',
     price: 8.49,
@@ -23,7 +23,7 @@ export const medicines: Medicine[] = [
   {
     id: '3',
     name: 'Digestive Health Plus',
-    imageUrl: '/placeholder.svg',
+    imageUrl: '/digestive.jpg',
     category: 'Digestive',
     description: 'Supports healthy digestion and helps relieve occasional stomach discomfort.',
     price: 12.99,
@@ -59,7 +59,7 @@ export const medicines: Medicine[] = [
   {
     id: '7',
     name: 'Glucose Monitor Strips',
-    imageUrl: '/gulcose.jpg',
+    imageUrl: '/glucose.jpg',
     category: 'Diabetes',
     description: 'Compatible test strips for blood glucose monitoring.',
     price: 24.99,
@@ -114,11 +114,11 @@ export const appointments: Appointment[] = [
 ];
 
 export const doctorInfo = {
-  name: 'Dr. Sarah Johnson',
+  name: 'Dr. Kamlesh Kumar Yadav',
   qualifications: 'MD, Ph.D., Board Certified in Internal Medicine',
   experience: '15+ years',
   specialization: 'General Medicine, Preventive Healthcare',
-  bio: 'Dr. Sarah Johnson is a highly respected physician with over 15 years of experience in general and internal medicine. She is passionate about preventive healthcare and providing personalized care to her patients. Dr. Johnson completed her medical education at Harvard Medical School and her residency at Johns Hopkins Hospital.',
+  bio: 'Dr. Kamlesh Kumar Yadav is a highly respected physician with over 15 years of experience in general and internal medicine. He is passionate about preventive healthcare and providing personalized care to his patients. Dr. Yadav completed his medical education at Harvard Medical School and his residency at Johns Hopkins Hospital.',
   imageUrl: '/kamlesh.jpg'
 };
 

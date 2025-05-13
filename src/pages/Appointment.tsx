@@ -19,7 +19,7 @@ const Appointment = () => {
           <div className="text-center mb-10 fade-in-element">
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Book an Appointment</h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Schedule a consultation with our experienced doctor for personalized healthcare advice.
+               Schedule a consultation with our experienced doctor for personalized healthcare advice.
             </p>
           </div>
           
