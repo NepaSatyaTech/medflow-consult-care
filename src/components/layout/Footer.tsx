@@ -1,8 +1,10 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="bg-gray-50 pt-16 pb-8">
       <div className="container-custom">
@@ -37,27 +39,27 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link to="/" className="text-gray-600 hover:text-medflow-blue transition-colors">
-                  Home
+                  {t('home')}
                 </Link>
               </li>
               <li>
                 <Link to="/medicines" className="text-gray-600 hover:text-medflow-blue transition-colors">
-                  Medicines
+                  {t('medicines')}
                 </Link>
               </li>
               <li>
                 <Link to="/appointment" className="text-gray-600 hover:text-medflow-blue transition-colors">
-                  Book Appointment
+                  {t('bookAppointment')}
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-gray-600 hover:text-medflow-blue transition-colors">
-                  Contact Us
+                  {t('contact')}
                 </Link>
               </li>
               <li>
                 <Link to="/login" className="text-gray-600 hover:text-medflow-blue transition-colors">
-                  Login / Register
+                  {t('login')}
                 </Link>
               </li>
             </ul>

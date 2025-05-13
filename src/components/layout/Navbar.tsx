@@ -2,10 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import LanguageSelector from './LanguageSelector';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -36,26 +39,28 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           <Link to="/" className="font-medium text-gray-700 hover:text-medflow-blue transition-colors">
-            Home
+            {t('home')}
           </Link>
           <Link to="/medicines" className="font-medium text-gray-700 hover:text-medflow-blue transition-colors">
-            Medicines
+            {t('medicines')}
           </Link>
           <Link to="/appointment" className="font-medium text-gray-700 hover:text-medflow-blue transition-colors">
-            Book Appointment
+            {t('bookAppointment')}
           </Link>
           <Link to="/contact" className="font-medium text-gray-700 hover:text-medflow-blue transition-colors">
-            Contact
+            {t('contact')}
           </Link>
+          <LanguageSelector />
           <Link to="/login">
             <Button className="bg-medflow-blue hover:bg-medflow-blue-dark">
-              Login / Register
+              {t('login')}
             </Button>
           </Link>
         </div>
         
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center space-x-2">
+          <LanguageSelector />
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-gray-700 focus:outline-none"
@@ -81,29 +86,29 @@ const Navbar = () => {
               className="block font-medium text-gray-700 hover:text-medflow-blue"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Home
+              {t('home')}
             </Link>
             <Link to="/medicines" 
               className="block font-medium text-gray-700 hover:text-medflow-blue"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Medicines
+              {t('medicines')}
             </Link>
             <Link to="/appointment" 
               className="block font-medium text-gray-700 hover:text-medflow-blue"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Book Appointment
+              {t('bookAppointment')}
             </Link>
             <Link to="/contact" 
               className="block font-medium text-gray-700 hover:text-medflow-blue"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Contact
+              {t('contact')}
             </Link>
             <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
               <Button className="w-full bg-medflow-blue hover:bg-medflow-blue-dark">
-                Login / Register
+                {t('login')}
               </Button>
             </Link>
           </div>

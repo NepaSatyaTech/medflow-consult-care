@@ -2,14 +2,17 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/context/LanguageContext';
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="bg-gradient-to-r from-medflow-blue to-medflow-blue-light text-white">
       <div className="container-custom min-h-[80vh] flex flex-col md:flex-row items-center justify-between py-20">
         <div className="md:w-1/2 mb-10 md:mb-0 fade-in-element">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Your Health, Our Priority
+            {t('yourHealth')}
           </h1>
           <p className="text-lg md:text-xl mb-8 text-blue-100">
             MedFlow brings together expert medical consultations and pharmacy services 
@@ -18,12 +21,12 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link to="/medicines">
               <Button className="bg-white text-medflow-blue hover:bg-gray-100 text-lg px-8 py-6 rounded-full">
-                Browse Medicines
+                {t('browseMedicines')}
               </Button>
             </Link>
             <Link to="/appointment">
               <Button className="bg-medflow-green hover:bg-medflow-green-dark text-lg px-8 py-6 rounded-full">
-                Book Appointment
+                {t('bookAppointment')}
               </Button>
             </Link>
           </div>

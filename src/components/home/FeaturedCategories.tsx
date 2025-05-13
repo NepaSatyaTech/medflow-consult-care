@@ -2,8 +2,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { categories } from '@/data/mockData';
+import { useLanguage } from '@/context/LanguageContext';
 
 const FeaturedCategories = () => {
+  const { t } = useLanguage();
   // Skip "All Categories" which is at index 0
   const displayCategories = categories.slice(1);
   
@@ -22,7 +24,7 @@ const FeaturedCategories = () => {
     <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center mb-12 fade-in-element">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Medicine Categories</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('medicineCategories')}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Browse our comprehensive range of health products organized by category.
           </p>

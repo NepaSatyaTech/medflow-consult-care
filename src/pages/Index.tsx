@@ -10,10 +10,12 @@ import KeyServicesSection from '@/components/home/KeyServicesSection';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { medicines } from '@/data/mockData';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Index = () => {
   // Featured medicines (just take a few for the homepage)
   const featuredMedicines = medicines.slice(0, 4);
+  const { t } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,7 +35,7 @@ const Index = () => {
         <section className="section-padding bg-white">
           <div className="container-custom">
             <div className="text-center mb-12 fade-in-element">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Medicines</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('featuredMedicines')}</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Explore our selection of top-quality medicines and healthcare products.
               </p>
@@ -76,7 +78,7 @@ const Index = () => {
             <div className="text-center fade-in-element" style={{ animationDelay: '400ms' }}>
               <Link to="/medicines">
                 <Button className="bg-medflow-blue-light hover:bg-medflow-blue text-lg px-8 py-6">
-                  View All Medicines
+                  {t('viewAllMedicines')}
                 </Button>
               </Link>
             </div>
@@ -93,19 +95,19 @@ const Index = () => {
         <section className="py-20 bg-gradient-to-r from-medflow-blue-dark to-medflow-blue">
           <div className="container-custom text-center text-white">
             <div className="max-w-3xl mx-auto fade-in-element">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Take Control of Your Health?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('readyToTake')}</h2>
               <p className="text-xl mb-8 text-blue-100">
                 Book an appointment with our experienced doctor or browse our wide range of quality medicines.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/appointment">
                   <Button className="bg-white text-medflow-blue hover:bg-gray-100 text-lg px-8 py-6 rounded-full">
-                    Book Appointment
+                    {t('bookAppointment')}
                   </Button>
                 </Link>
                 <Link to="/medicines">
                   <Button className="bg-medflow-green hover:bg-medflow-green-dark text-lg px-8 py-6 rounded-full">
-                    Browse Medicines
+                    {t('browseMedicines')}
                   </Button>
                 </Link>
               </div>
