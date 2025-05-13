@@ -6,6 +6,7 @@ import HeroSection from '@/components/home/HeroSection';
 import DoctorSection from '@/components/home/DoctorSection';
 import StatsSection from '@/components/home/StatsSection';
 import FeaturedCategories from '@/components/home/FeaturedCategories';
+import KeyServicesSection from '@/components/home/KeyServicesSection';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { medicines } from '@/data/mockData';
@@ -24,6 +25,9 @@ const Index = () => {
       
       <main className="flex-grow pt-16">
         <HeroSection />
+        
+        {/* Key Services Section */}
+        <KeyServicesSection />
         
         {/* Featured Medicines Section */}
         <section className="section-padding bg-white">
