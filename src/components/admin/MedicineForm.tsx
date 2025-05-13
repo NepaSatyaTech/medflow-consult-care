@@ -94,7 +94,7 @@ const MedicineForm: React.FC<MedicineFormProps> = ({ medicine, onSave, onCancel 
       
       toast({
         title: isEditing ? "Medicine Updated" : "Medicine Added",
-        description: `"${values.name}" has been ${isEditing ? 'updated' : 'added'} successfully.`,
+        description: `"{values.name}" has been {isEditing ? 'updated' : 'added'} successfully.`,
       });
       
       setIsSubmitting(false);
@@ -152,7 +152,7 @@ const MedicineForm: React.FC<MedicineFormProps> = ({ medicine, onSave, onCancel 
               name="price"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price ($)</FormLabel>
+                  <FormLabel>Price (Rs.)</FormLabel>
                   <FormControl>
                     <Input 
                       type="number" 

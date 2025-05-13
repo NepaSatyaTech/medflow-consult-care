@@ -75,7 +75,7 @@ const Dashboard = () => {
                 <CardTitle className="text-sm font-medium text-gray-500">Revenue (Demo)</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold">$12,450</div>
+                <div className="text-3xl font-bold">12,450</div>
                 <p className="text-sm text-green-500 mt-1">
                   ↑ 12% from last month
                 </p>
@@ -104,8 +104,8 @@ const Dashboard = () => {
                         <div className="text-sm text-gray-500">{medicine.category}</div>
                       </div>
                       <div className="text-right">
-                        <div className="font-medium">${medicine.price.toFixed(2)}</div>
-                        <div className={`text-xs px-2 py-0.5 rounded-full ${medicine.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                        <div className="font-medium">{medicine.price.toFixed(2)}</div>
+                        <div className={`text-xs px-2 py-0.5 rounded-full {medicine.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                           {medicine.inStock ? 'In Stock' : 'Out of Stock'}
                         </div>
                       </div>

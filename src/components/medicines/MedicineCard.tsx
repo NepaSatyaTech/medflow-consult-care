@@ -39,7 +39,7 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
           <span className="text-xs font-medium text-medflow-blue bg-blue-50 py-1 px-2 rounded-full">
             {medicine.category}
           </span>
-          <span className="font-semibold text-gray-900">${medicine.price.toFixed(2)}</span>
+          <span className="font-semibold text-gray-900">{medicine.price.toFixed(2)}</span>
         </div>
         <h3 className="font-medium text-gray-900 mb-2">{medicine.name}</h3>
         <p className="text-sm text-gray-600 line-clamp-3">{medicine.description}</p>

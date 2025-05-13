@@ -36,7 +36,7 @@ const HeroSection = () => {
             <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-medflow-green/30 animate-pulse"></div>
             <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-blue-400/20 animate-pulse" style={{ animationDelay: '1s' }}></div>
             <img 
-              src="/placeholder.svg" 
+              src="/medical3.jpg" 
               alt="Doctor and Pharmacist" 
               className="rounded-2xl relative z-10 shadow-xl"
             />

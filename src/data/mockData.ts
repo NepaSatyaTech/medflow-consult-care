@@ -5,7 +5,7 @@ export const medicines: Medicine[] = [
   {
     id: '1',
     name: 'Paracetamol 500mg',
-    imageUrl: '/placeholder.svg',
+    imageUrl: '/paracetamol500.jpeg',
     category: 'Pain Relief',
     description: 'Effective pain reliever and fever reducer for adults and children.',
     price: 5.99,
@@ -32,7 +32,7 @@ export const medicines: Medicine[] = [
   {
     id: '4',
     name: 'Multivitamin Daily',
-    imageUrl: '/placeholder.svg',
+    imageUrl: '/multivatimin.jpg',
     category: 'Vitamins',
     description: 'Complete daily multivitamin formula with essential nutrients for overall health.',
     price: 15.99,
@@ -41,7 +41,7 @@ export const medicines: Medicine[] = [
   {
     id: '5',
     name: 'First Aid Antiseptic',
-    imageUrl: '/placeholder.svg',
+    imageUrl: '/first.jpg',
     category: 'First Aid',
     description: 'Helps prevent infection in minor cuts, scrapes, and burns.',
     price: 6.49,
@@ -50,7 +50,7 @@ export const medicines: Medicine[] = [
   {
     id: '6',
     name: 'Allergy Relief Tablets',
-    imageUrl: '/placeholder.svg',
+    imageUrl: '/allergy.jpg',
     category: 'Allergy',
     description: '24-hour non-drowsy relief from seasonal allergies and hay fever symptoms.',
     price: 14.99,
@@ -59,7 +59,7 @@ export const medicines: Medicine[] = [
   {
     id: '7',
     name: 'Glucose Monitor Strips',
-    imageUrl: '/placeholder.svg',
+    imageUrl: '/gulcose.jpg',
     category: 'Diabetes',
     description: 'Compatible test strips for blood glucose monitoring.',
     price: 24.99,
@@ -68,7 +68,7 @@ export const medicines: Medicine[] = [
   {
     id: '8',
     name: 'Heart Health Omega-3',
-    imageUrl: '/placeholder.svg',
+    imageUrl: '/heart.jpg',
     category: 'Heart Health',
     description: 'Supports cardiovascular health with premium omega-3 fatty acids.',
     price: 19.99,
@@ -119,7 +119,7 @@ export const doctorInfo = {
   experience: '15+ years',
   specialization: 'General Medicine, Preventive Healthcare',
   bio: 'Dr. Sarah Johnson is a highly respected physician with over 15 years of experience in general and internal medicine. She is passionate about preventive healthcare and providing personalized care to her patients. Dr. Johnson completed her medical education at Harvard Medical School and her residency at Johns Hopkins Hospital.',
-  imageUrl: '/placeholder.svg'
+  imageUrl: '/kamlesh.jpg'
 };
 
 export const statsData = [
