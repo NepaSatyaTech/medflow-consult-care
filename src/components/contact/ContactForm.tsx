@@ -70,7 +70,7 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>Your Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="John Doe" {...field} />
+                  <Input placeholder="Kamlesh Kumar yadav" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -84,7 +84,7 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
-                  <Input placeholder="johndoe@example.com" {...field} />
+                  <Input placeholder="sewamedical@gmail.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
