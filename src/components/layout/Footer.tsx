@@ -94,16 +94,16 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-gray-800 mb-4">Contact</h3>
             <address className="not-italic text-gray-600 space-y-2">
-              <p>123 Healthcare Avenue</p>
-              <p>Medical District, MD 10010</p>
-              <p>Phone: (123) 456-7890</p>
-              <p>Email: contact@medflow.com</p>
+              <p>Sewa medical </p>
+              <p>Kapilvastu District</p>
+              <p>Phone: 076-590012</p>
+              <p>Email: sewamedical@gmail.com</p>
             </address>
           </div>
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-200 text-center">
-          <p className="text-gray-500">&copy; {new Date().getFullYear()} MedFlow. All rights reserved.</p>
+          <p className="text-gray-500">&copy; {new Date().getFullYear()} Sewa Medical. All rights reserved.</p>
         </div>
       </div>
     </footer>
