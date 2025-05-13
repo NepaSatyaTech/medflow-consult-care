@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Activity, Check, Syringe, Scissors, TestTube, Heart, Baby, FirstAid, Info, Link } from 'lucide-react';
+import { Activity, Check, Syringe, Scissors, TestTube, Heart, Baby, Stethoscope, Info, Link } from 'lucide-react';
 
 type Service = {
   icon: React.ReactNode;
@@ -19,7 +19,7 @@ const KeyServicesSection = () => {
     { icon: <Heart className="w-5 h-5 text-medflow-blue" />, title: "Chronic Disease Management (Diabetes, Hypertension, etc.)" },
     { icon: <Heart className="w-5 h-5 text-medflow-blue" />, title: "Women's Health & Wellness" },
     { icon: <Baby className="w-5 h-5 text-medflow-blue" />, title: "Pediatric & Elderly Care" },
-    { icon: <FirstAid className="w-5 h-5 text-medflow-blue" />, title: "Emergency First Aid" },
+    { icon: <Stethoscope className="w-5 h-5 text-medflow-blue" />, title: "Emergency First Aid" },
     { icon: <Info className="w-5 h-5 text-medflow-blue" />, title: "Health Education & Counseling" },
     { icon: <Link className="w-5 h-5 text-medflow-blue" />, title: "Referrals to Medical Specialists" },
   ];
