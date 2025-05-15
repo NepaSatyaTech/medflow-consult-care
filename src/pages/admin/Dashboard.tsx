@@ -4,6 +4,8 @@ import Sidebar from '@/components/admin/Sidebar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { medicines, appointments } from '@/data/mockData';
+import { IndianRupee, Calendar, MedicinePill } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   // Calculate basic statistics
@@ -30,7 +32,7 @@ const Dashboard = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-center justify-between mb-8">
             <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-            <p className="text-sm text-gray-500">Last updated: May 2, 2025</p>
+            <p className="text-sm text-gray-500">Last updated: May 15, 2025</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -75,7 +77,10 @@ const Dashboard = () => {
                 <CardTitle className="text-sm font-medium text-gray-500">Revenue (Demo)</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold">12,450</div>
+                <div className="flex items-center text-3xl font-bold">
+                  <IndianRupee size={20} className="mr-1" />
+                  12,450
+                </div>
                 <p className="text-sm text-green-500 mt-1">
                   ↑ 12% from last month
                 </p>
@@ -85,8 +90,14 @@ const Dashboard = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Card>
-              <CardHeader>
-                <CardTitle>Recent Medicines</CardTitle>
+              <CardHeader className="flex flex-row items-center justify-between">
+                <CardTitle className="flex items-center">
+                  <MedicinePill className="mr-2 h-5 w-5" /> 
+                  Recent Medicines
+                </CardTitle>
+                <Link to="/admin/medicines">
+                  <Button variant="outline" size="sm">Manage</Button>
+                </Link>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -104,27 +115,37 @@ const Dashboard = () => {
                         <div className="text-sm text-gray-500">{medicine.category}</div>
                       </div>
                       <div className="text-right">
-                        <div className="font-medium">{medicine.price.toFixed(2)}</div>
-                        <div className={`text-xs px-2 py-0.5 rounded-full {medicine.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                        <div className="font-medium flex items-center">
+                          <IndianRupee size={14} className="mr-0.5" />
+                          {medicine.price.toFixed(2)}
+                        </div>
+                        <div className={`text-xs px-2 py-0.5 rounded-full ${medicine.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                           {medicine.inStock ? 'In Stock' : 'Out of Stock'}
                         </div>
                       </div>
                     </div>
                   ))}
                 </div>
-                <Button 
-                  variant="outline" 
-                  className="w-full mt-6"
-                  onClick={() => window.location.href = '/admin/medicines'}
-                >
-                  View All Medicines
-                </Button>
+                <Link to="/admin/medicines">
+                  <Button 
+                    variant="outline" 
+                    className="w-full mt-6"
+                  >
+                    View All Medicines
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
             
             <Card>
-              <CardHeader>
-                <CardTitle>Recent Appointments</CardTitle>
+              <CardHeader className="flex flex-row items-center justify-between">
+                <CardTitle className="flex items-center">
+                  <Calendar className="mr-2 h-5 w-5" /> 
+                  Recent Appointments
+                </CardTitle>
+                <Link to="/admin/appointments">
+                  <Button variant="outline" size="sm">Manage</Button>
+                </Link>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -154,13 +175,14 @@ const Dashboard = () => {
                     </div>
                   ))}
                 </div>
-                <Button 
-                  variant="outline" 
-                  className="w-full mt-6"
-                  onClick={() => window.location.href = '/admin/appointments'}
-                >
-                  View All Appointments
-                </Button>
+                <Link to="/admin/appointments">
+                  <Button 
+                    variant="outline" 
+                    className="w-full mt-6"
+                  >
+                    View All Appointments
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>

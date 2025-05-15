@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Medicine } from '@/types';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { IndianRupee } from 'lucide-react';
 
 interface MedicineCardProps {
   medicine: Medicine;
@@ -39,7 +40,10 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
           <span className="text-xs font-medium text-medflow-blue bg-blue-50 py-1 px-2 rounded-full">
             {medicine.category}
           </span>
-          <span className="font-semibold text-gray-900">{medicine.price.toFixed(2)}</span>
+          <div className="flex items-center font-semibold text-gray-900">
+            <IndianRupee size={14} className="mr-0.5" />
+            {medicine.price.toFixed(2)}
+          </div>
         </div>
         <h3 className="font-medium text-gray-900 mb-2">{medicine.name}</h3>
         <p className="text-sm text-gray-600 line-clamp-3">{medicine.description}</p>

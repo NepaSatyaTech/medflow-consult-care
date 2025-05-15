@@ -22,6 +22,7 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { Medicine } from '@/types';
 import { medicines as initialMedicines } from '@/data/mockData';
+import { IndianRupee } from 'lucide-react';
 
 const AdminMedicines = () => {
   const [medicines, setMedicines] = useState<Medicine[]>(initialMedicines);
@@ -133,7 +134,12 @@ const AdminMedicines = () => {
                         <TableCell className="hidden md:table-cell max-w-xs">
                           <span className="line-clamp-2">{medicine.description}</span>
                         </TableCell>
-                        <TableCell>${medicine.price.toFixed(2)}</TableCell>
+                        <TableCell>
+                          <div className="flex items-center">
+                            <IndianRupee size={14} className="mr-1" />
+                            {medicine.price.toFixed(2)}
+                          </div>
+                        </TableCell>
                         <TableCell>
                           <span className={`text-xs px-2 py-1 rounded-full ${medicine.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                             {medicine.inStock ? 'In Stock' : 'Out of Stock'}
@@ -172,7 +178,7 @@ const AdminMedicines = () => {
         setShowAddForm(false);
         setEditingMedicine(null);
       }}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-3xl">
           <DialogHeader>
             <DialogTitle>{editingMedicine ? 'Edit Medicine' : 'Add New Medicine'}</DialogTitle>
           </DialogHeader>

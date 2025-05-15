@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { medicines } from '@/data/mockData';
 import { useLanguage } from '@/context/LanguageContext';
+import { IndianRupee } from 'lucide-react';
 
 const Index = () => {
   // Featured medicines (just take a few for the homepage)
@@ -60,7 +61,10 @@ const Index = () => {
                       <span className="bg-blue-50 text-medflow-blue text-xs py-1 px-2 rounded-full">
                         {medicine.category}
                       </span>
-                      <span className="font-semibold">${medicine.price.toFixed(2)}</span>
+                      <span className="font-semibold flex items-center">
+                        <IndianRupee size={14} className="mr-0.5" />
+                        {medicine.price.toFixed(2)}
+                      </span>
                     </div>
                     <h3 className="font-medium mb-1">{medicine.name}</h3>
                     <p className="text-sm text-gray-500 line-clamp-2 mb-4">{medicine.description}</p>
