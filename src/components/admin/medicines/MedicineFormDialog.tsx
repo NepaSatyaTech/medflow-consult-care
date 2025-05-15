@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle
 } from '@/components/ui/dialog';
-import MedicineForm from '@/components/admin/MedicineForm';
+import MedicineForm from '@/components/admin/medicines/MedicineForm';
 import { Medicine } from '@/types';
 
 interface MedicineFormDialogProps {
