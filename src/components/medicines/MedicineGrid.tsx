@@ -35,6 +35,7 @@ const MedicineGrid: React.FC<MedicineGridProps> = ({
     }
     
     setFilteredMedicines(result);
+    console.log('Filtered medicines updated:', result.length);
   }, [medicines, category, searchTerm]);
   
   if (filteredMedicines.length === 0) {

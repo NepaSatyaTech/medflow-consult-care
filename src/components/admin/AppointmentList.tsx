@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Table,
@@ -8,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Appointment } from '@/types';
+import { Appointment, AppointmentStatus } from '@/types';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -21,7 +20,7 @@ import { useToast } from '@/hooks/use-toast';
 
 interface AppointmentListProps {
   appointments: Appointment[];
-  onStatusChange: (appointmentId: string, status: 'approved' | 'rejected') => void;
+  onStatusChange: (appointmentId: string, status: AppointmentStatus) => void;
 }
 
 const AppointmentList: React.FC<AppointmentListProps> = ({ 
@@ -48,6 +47,14 @@ const AppointmentList: React.FC<AppointmentListProps> = ({
     toast({
       title: "Appointment Rejected",
       description: "The appointment has been rejected."
+    });
+  };
+
+  const handleComplete = (id: string) => {
+    onStatusChange(id, 'completed');
+    toast({
+      title: "Appointment Completed",
+      description: "The appointment has been marked as completed."
     });
   };
 
@@ -117,6 +124,15 @@ const AppointmentList: React.FC<AppointmentListProps> = ({
                         Reject
                       </Button>
                     </>
+                  )}
+                  {appointment.status === 'approved' && (
+                    <Button 
+                      className="bg-blue-500 hover:bg-blue-600 text-white"
+                      size="sm"
+                      onClick={() => handleComplete(appointment.id)}
+                    >
+                      Complete
+                    </Button>
                   )}
                 </div>
               </TableCell>
@@ -191,6 +207,20 @@ const AppointmentList: React.FC<AppointmentListProps> = ({
                     }}
                   >
                     Reject
+                  </Button>
+                </div>
+              )}
+              
+              {selectedAppointment.status === 'approved' && (
+                <div className="flex justify-end gap-2 pt-4">
+                  <Button 
+                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                    onClick={() => {
+                      handleComplete(selectedAppointment.id);
+                      setSelectedAppointment(null);
+                    }}
+                  >
+                    Mark as Completed
                   </Button>
                 </div>
               )}

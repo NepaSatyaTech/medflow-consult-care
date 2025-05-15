@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import MedicineGrid from '@/components/medicines/MedicineGrid';
-import { medicines, categories } from '@/data/mockData';
+import { medicines as initialMedicines, categories } from '@/data/mockData';
 import { useLocation } from 'react-router-dom';
+import { Medicine } from '@/types';
 
 const Medicines = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
+  const [medicines, setMedicines] = useState<Medicine[]>(initialMedicines);
   const location = useLocation();
   
   useEffect(() => {
@@ -20,6 +22,18 @@ const Medicines = () => {
     
     if (categoryParam && categories.includes(categoryParam)) {
       setSelectedCategory(categoryParam);
+    }
+    
+    // Load medicines from localStorage if available
+    const storedMedicines = localStorage.getItem('medicines');
+    if (storedMedicines) {
+      try {
+        const parsedMedicines = JSON.parse(storedMedicines);
+        setMedicines(parsedMedicines);
+        console.log('Loaded medicines from localStorage:', parsedMedicines.length);
+      } catch (error) {
+        console.error('Error parsing medicines from localStorage:', error);
+      }
     }
   }, [location.search]);
   

@@ -39,18 +39,52 @@ const AdminMedicines = () => {
   );
   
   const handleSaveMedicine = (medicine: Medicine) => {
+    // Get the current date and time for logging
+    const timestamp = new Date().toISOString();
+    
     if (editingMedicine) {
-      setMedicines(medicines.map(med => med.id === medicine.id ? medicine : med));
+      // Update existing medicine
+      const updatedMedicines = medicines.map(med => med.id === medicine.id ? medicine : med);
+      setMedicines(updatedMedicines);
+      
+      // Update localStorage to ensure changes persist across the site
+      localStorage.setItem('medicines', JSON.stringify(updatedMedicines));
+      
       setEditingMedicine(null);
+      toast({
+        title: "Medicine Updated",
+        description: `"${medicine.name}" has been updated successfully at ${timestamp}.`,
+      });
+      
+      // Log the update for debugging
+      console.log(`Medicine updated: ${medicine.name} at ${timestamp}`, medicine);
     } else {
-      setMedicines([...medicines, medicine]);
+      // Add new medicine
+      const newMedicines = [...medicines, medicine];
+      setMedicines(newMedicines);
+      
+      // Update localStorage to ensure changes persist across the site
+      localStorage.setItem('medicines', JSON.stringify(newMedicines));
+      
       setShowAddForm(false);
+      toast({
+        title: "Medicine Added",
+        description: `"${medicine.name}" has been added successfully at ${timestamp}.`,
+      });
+      
+      // Log the addition for debugging
+      console.log(`New medicine added: ${medicine.name} at ${timestamp}`, medicine);
     }
   };
   
   const handleDeleteMedicine = () => {
     if (medicineToDelete) {
-      setMedicines(medicines.filter(med => med.id !== medicineToDelete.id));
+      const updatedMedicines = medicines.filter(med => med.id !== medicineToDelete.id);
+      setMedicines(updatedMedicines);
+      
+      // Update localStorage to ensure changes persist across the site
+      localStorage.setItem('medicines', JSON.stringify(updatedMedicines));
+      
       toast({
         title: "Medicine Deleted",
         description: `"${medicineToDelete.name}" has been deleted successfully.`,

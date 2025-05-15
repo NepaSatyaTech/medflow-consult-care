@@ -1,20 +1,46 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '@/components/admin/Sidebar';
 import AppointmentList from '@/components/admin/AppointmentList';
 import { Appointment, AppointmentStatus } from '@/types';
 import { appointments as initialAppointments } from '@/data/mockData';
+import { useToast } from '@/hooks/use-toast';
 
 const AdminAppointments = () => {
   const [appointments, setAppointments] = useState<Appointment[]>(initialAppointments);
   const [statusFilter, setStatusFilter] = useState<string>('all');
+  const { toast } = useToast();
 
-  const handleStatusChange = (appointmentId: string, status: 'approved' | 'rejected') => {
-    setAppointments(appointments.map(appointment => 
+  useEffect(() => {
+    // Load appointments from localStorage if available
+    const storedAppointments = localStorage.getItem('appointments');
+    if (storedAppointments) {
+      try {
+        const parsedAppointments = JSON.parse(storedAppointments);
+        setAppointments(parsedAppointments);
+        console.log('Loaded appointments from localStorage:', parsedAppointments.length);
+      } catch (error) {
+        console.error('Error parsing appointments from localStorage:', error);
+      }
+    }
+  }, []);
+
+  const handleStatusChange = (appointmentId: string, status: AppointmentStatus) => {
+    const updatedAppointments = appointments.map(appointment => 
       appointment.id === appointmentId 
         ? { ...appointment, status } 
         : appointment
-    ));
+    );
+    
+    setAppointments(updatedAppointments);
+    
+    // Save updated appointments to localStorage
+    localStorage.setItem('appointments', JSON.stringify(updatedAppointments));
+    
+    toast({
+      title: `Appointment ${status}`,
+      description: `Appointment has been ${status} successfully.`,
+    });
   };
   
   const filteredAppointments = statusFilter === 'all'

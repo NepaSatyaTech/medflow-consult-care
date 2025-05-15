@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/home/HeroSection';
@@ -9,18 +9,36 @@ import FeaturedCategories from '@/components/home/FeaturedCategories';
 import KeyServicesSection from '@/components/home/KeyServicesSection';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { medicines } from '@/data/mockData';
+import { medicines as initialMedicines } from '@/data/mockData';
 import { useLanguage } from '@/context/LanguageContext';
 import { IndianRupee } from 'lucide-react';
+import { Medicine } from '@/types';
+import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
-  // Featured medicines (just take a few for the homepage)
-  const featuredMedicines = medicines.slice(0, 4);
-  const { t } = useLanguage();
-
+  // State for medicines with initial data from mock
+  const [medicines, setMedicines] = useState<Medicine[]>(initialMedicines);
+  const { t } = useToast();
+  
+  // Get stored medicines on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Load medicines from localStorage if available
+    const storedMedicines = localStorage.getItem('medicines');
+    if (storedMedicines) {
+      try {
+        const parsedMedicines = JSON.parse(storedMedicines);
+        setMedicines(parsedMedicines);
+        console.log('Home page: Loaded medicines from localStorage:', parsedMedicines.length);
+      } catch (error) {
+        console.error('Error parsing medicines from localStorage:', error);
+      }
+    }
   }, []);
+
+  // Featured medicines (just take a few for the homepage)
+  const featuredMedicines = medicines.slice(0, 4);
 
   return (
     <div className="min-h-screen flex flex-col">
