@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import Sidebar from '@/components/admin/Sidebar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { medicines, appointments } from '@/data/mockData';
-import { IndianRupee, Calendar, MedicinePill } from 'lucide-react';
+import { IndianRupee, Calendar, Pill } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -92,7 +91,7 @@ const Dashboard = () => {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="flex items-center">
-                  <MedicinePill className="mr-2 h-5 w-5" /> 
+                  <Pill className="mr-2 h-5 w-5" /> 
                   Recent Medicines
                 </CardTitle>
                 <Link to="/admin/medicines">
